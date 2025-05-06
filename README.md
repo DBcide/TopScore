@@ -1,2 +1,2 @@
 # Top Score
-## Symfony learn and training project !
+## Symfony learn and training school project !
