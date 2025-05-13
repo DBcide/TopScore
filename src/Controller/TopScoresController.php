@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class TopScoresController extends AbstractController
 {
-    #[Route('/topscores', name: 'app_top_scores')]
+    #[Route('/topscores/{id}', name: 'app_top_scores')]
     public function index(Request $request): Response
     {
         $formListJeux = $this->createForm(ListeJeuxForm::class);
@@ -18,7 +18,6 @@ final class TopScoresController extends AbstractController
 
         if ($formListJeux->isSubmitted() && $formListJeux->isValid()) {
             $jeu = $formListJeux->get('jeux')->getData();
-            dd($jeu);
         }
 
         return $this->render('top_scores/index.html.twig', [
