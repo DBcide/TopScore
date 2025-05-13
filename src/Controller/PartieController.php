@@ -17,6 +17,10 @@ final class PartieController extends AbstractController
     #[Route(name: 'app_partie_index', methods: ['GET'])]
     public function index(PartieRepository $partieRepository): Response
     {
+        $user = $this->getUser();
+
+        $parties = $partieRepository->findBy(['user' => $user]);
+
         return $this->render('partie/index.html.twig', [
             'parties' => $partieRepository->findAll(),
         ]);
@@ -26,6 +30,8 @@ final class PartieController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $partie = new Partie();
+        $partie->setUser($this->getUser());
+
         $form = $this->createForm(PartieForm::class, $partie);
         $form->handleRequest($request);
 
@@ -33,7 +39,7 @@ final class PartieController extends AbstractController
             $entityManager->persist($partie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_partie_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_partie_index');
         }
 
         return $this->render('partie/new.html.twig', [

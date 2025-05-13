@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Date</th>
+                <th>Jeu</th>
                 <th>Score</th>
                 <th>actions</th>
             </tr>
@@ -19,6 +20,7 @@
             <tr>
                 <td>{{ partie.id }}</td>
                 <td>{{ partie.date ? partie.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ partie.jeu.name }}</td>
                 <td>{{ partie.score }}</td>
                 <td>
                     <a href="{{ path('app_partie_show', {'id': partie.id}) }}">show</a>

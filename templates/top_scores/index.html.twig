@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TopScoresController!{% endblock %}
+
+{% block body %}
+
+
+
+{{ form_start(formListJeux) }}
+<div class="row">
+    <div class="col-md-6">
+        {{ form_row(formListJeux.jeux) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(formListJeux.submit) }}
+    </div>
+</div>
+{{ form_end(formListJeux) }}
+
+{% endblock %}
