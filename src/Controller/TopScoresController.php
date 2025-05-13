@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Jeu;
 use App\Form\ListeJeuxForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class TopScoresController extends AbstractController
 {
     #[Route('/topscores/{id}', name: 'app_top_scores')]
-    public function index(Request $request): Response
+    public function index(Request $request, Jeu $jeu): Response
     {
         $formListJeux = $this->createForm(ListeJeuxForm::class);
         $formListJeux->handleRequest($request);
