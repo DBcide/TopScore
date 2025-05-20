@@ -21,7 +21,7 @@ body {
 
 /* Deuxième à droite et un peu plus bas */
 .second-place {
-    top: 30%;
+    top: 20%;
     left: 70%;
     transform: translateX(-50%);
 }
