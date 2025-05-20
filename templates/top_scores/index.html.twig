@@ -17,4 +17,58 @@
 </div>
 {{ form_end(formListJeux) }}
 
+
+{% if jeu is not null %}
+<div class="row position-relative podium-container">
+    <img src="{{ asset('img/winner-podium-3d-vector-illustration.png') }}" alt="Podium" class="img-fluid" />
+
+    <div class="podium-name first-place">
+        {% if first is not null %}
+            {{ first.user.username }}
+        {% else %}
+            Aucun 1er ce mois-ci
+        {% endif %}
+    </div>
+
+    <div class="podium-name second-place">
+        {% if second is not null %}
+            {{ second.user.username }}
+        {% else %}
+            Aucun 2ème ce mois-ci
+        {% endif %}
+    </div>
+
+    <div class="podium-name third-place">
+        {% if third is not null %}
+            {{ third.user.username }}
+        {% else %}
+            Aucun 3ème ce mois-ci
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+
+<div class="row">
+    <h2>Leader board</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Ranking</th>
+                <th>Pseudo</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for score in scores %}
+            <tr>
+                <td>#{{ loop.index }}</yd>
+                <td>{{ score.user.username }}</yd>
+                <td>{{ score.score }}</yd>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 {% endblock %}
